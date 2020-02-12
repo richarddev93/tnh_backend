@@ -21,6 +21,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
         # fields = ['id','nome','email','senha','tel','dt_nasc']
         fields = '__all__'
 
+<<<<<<< HEAD
 
 class HorarioSerializers(serializers.ModelSerializer):
     class Meta:
@@ -52,3 +53,10 @@ class ServicosSerializer(serializers.ModelSerializer):
         for horario_data in horarios_data:
             HrFuncionamento.objects.create(servico=serv, **horario_data)
         return serv   
+=======
+class ServicosSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Servico
+        fields ='__all__'
+>>>>>>> 96814ec98eef11c4aef8058ceb31d7b3a57221b7

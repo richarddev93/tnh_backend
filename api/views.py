@@ -4,17 +4,28 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 from .serializers import UsuarioSerializer,ServicosSerializer,HorarioSerializers,UserSerializer
 from .models import * 
 from django.views.decorators.csrf import csrf_exempt
 
 
+=======
+from .serializers import UserSerializer,UsuarioSerializer
+from .models import * 
+from django.views.decorators.csrf import csrf_exempt
+
+>>>>>>> 96814ec98eef11c4aef8058ceb31d7b3a57221b7
 from .pagination import PaginacaoUsuario
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     print(queryset)
     serializer_class = UserSerializer
     
+<<<<<<< HEAD
+=======
+
+>>>>>>> 96814ec98eef11c4aef8058ceb31d7b3a57221b7
 class UsuarioList(APIView):
 
     def get(self, request, format=None):
@@ -76,9 +87,14 @@ class UsuarioDetalhes(APIView):
         usuario.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+<<<<<<< HEAD
 class ServicosView(viewsets.ModelViewSet):
     queryset = Servico.objects.all()
     serializer_class = ServicosSerializer
 class HorarioView(viewsets.ModelViewSet):
     queryset = HrFuncionamento.objects.all()
     serializer_class = HorarioSerializers
+=======
+class Servico(APIView):
+    pass
+>>>>>>> 96814ec98eef11c4aef8058ceb31d7b3a57221b7

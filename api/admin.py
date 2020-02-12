@@ -3,6 +3,7 @@ from .models import *
 from functools import partial
 from django.forms import MediaDefiningClass
 # Register your models here.
+<<<<<<< HEAD
 class TelefoneInlines(admin.TabularInline):
     model = Telefone
 class HorarioInlines(admin.TabularInline):
@@ -33,6 +34,15 @@ class TelefoneAdmin(admin.ModelAdmin):
 admin.site.register(Telefone, TelefoneAdmin)
 
 # admin.site.register(Servico)
+=======
+
+class TelefoneAdmin(admin.ModelAdmin):
+    list_display = ('servico','num')
+
+admin.site.register(Telefone, TelefoneAdmin)
+
+admin.site.register(Servico)
+>>>>>>> 96814ec98eef11c4aef8058ceb31d7b3a57221b7
 admin.site.register(Usuario)
 admin.site.register(UsuarioServ)
 # admin.site.register(Telefone)

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 https://github.com/richarddev93/tnh_backend.git# Django #
+=======
+# Django #
+>>>>>>> 96814ec98eef11c4aef8058ceb31d7b3a57221b7
 *.log
 *.pot
 *.pyc
