@@ -5,11 +5,7 @@ import sys
 
 
 def main():
-<<<<<<< HEAD
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
-=======
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backendapi.settings')
->>>>>>> 96814ec98eef11c4aef8058ceb31d7b3a57221b7
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

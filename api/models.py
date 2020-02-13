@@ -54,11 +54,7 @@ class Endereco(models.Model):
     gia      = models.CharField( max_length = 4 ,blank=True ,null=True )
     unidade  = models.CharField( max_length = 4, blank=True, null=True )
     ibge     = models.CharField( max_length = 4 ,blank=True, null=True )
-<<<<<<< HEAD
     servico = models.ForeignKey('Servico', related_name='servico_endereco', on_delete=models.CASCADE)
-=======
-    servico = models.ForeignKey('Servico', related_name='servico', on_delete=models.CASCADE)
->>>>>>> 96814ec98eef11c4aef8058ceb31d7b3a57221b7
                
 class Servico(models.Model):
     nomefantasia = models.CharField( max_length = 60)
@@ -77,6 +73,7 @@ class Servico(models.Model):
     # telefone  = models.ManyToManyField( Telefone) 
     categoria = models.ManyToManyField( Categoria)
     status  = models.BooleanField(default=True)
+    horario = models.CharField(max_length=60)
 
 
     def __str__(self):
