@@ -42,7 +42,6 @@ class UsuarioList(APIView):
         except Exception :
             return  JsonResponse({'mensagem': "Erro no Servidor"} ,status = status.HTTP_500_INTERNAL_SERVER_ERROR)   
 
-# @csrf_exempt
 class UsuarioDetalhes(APIView):
     """
     Retrieve, update or delete a snippet instance.
