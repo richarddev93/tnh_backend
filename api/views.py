@@ -3,17 +3,18 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
 
-from django.contrib.auth.models import User
-from .serializers import UsuarioSerializer,ServicosSerializer,HorarioSerializers,UserSerializer
+# from django.contrib.auth.models import User
+from .serializers import UsuarioSerializer,ServicosSerializer,HorarioSerializers
+# UserSerializer
 from .models import * 
 from django.views.decorators.csrf import csrf_exempt
 
 
 from .pagination import PaginacaoUsuario
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    print(queryset)
-    serializer_class = UserSerializer
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     print(queryset)
+#     serializer_class = UserSerializer
     
 class UsuarioList(APIView):
 
