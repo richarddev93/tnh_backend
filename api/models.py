@@ -10,6 +10,7 @@ class UsuarioServ(models.Model):
     cpf        = models.CharField( max_length = 11 )
     telefone      = models.CharField( max_length = 11 )
     dt_criacao = models.DateTimeField(auto_now_add=True)
+    
 
 
     def __str__(self):
@@ -69,11 +70,8 @@ class Servico(models.Model):
     nota_media = models.DecimalField(max_digits = 3,decimal_places=2 ,editable=False,default=0)
 
     usuario  = models.ForeignKey( UsuarioServ ,on_delete = models.CASCADE)
-    # endereco = models.ManyToManyField( Endereco)
-    # telefone  = models.ManyToManyField( Telefone) 
     categoria = models.ManyToManyField( Categoria)
     status  = models.BooleanField(default=True)
-    horario = models.CharField(max_length=60)
 
 
     def __str__(self):

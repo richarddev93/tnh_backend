@@ -14,5 +14,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('usuario/', UsuarioList.as_view()),
     path('usuario/<int:pk>/', UsuarioDetalhes.as_view()),
+    # path('login/',Usuariologin,name ='usuaario_login')
     
 ]
