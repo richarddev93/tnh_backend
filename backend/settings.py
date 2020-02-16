@@ -12,7 +12,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 ALLOWED_HOSTS = ['tnh-webservice.herokuapp.com','localhost','http://tnh-webservice.herokuapp.com/','http://127.0.0.1:8000/']
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
