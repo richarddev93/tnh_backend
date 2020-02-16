@@ -84,27 +84,27 @@ class Avaliacao(models.Model) :
     id_usuario_consum = models.IntegerField()
     id_servico = models.IntegerField()
 
-class Usuario(models.Model):
-    nome = models.CharField(max_length=60)
-    email = models.EmailField( max_length=100)
-    senha = models.CharField(max_length=8)
-    tel=models.CharField(blank=True,null=True,max_length=15)
-    foto=models.ImageField(upload_to='profile_picture',blank=True,null=True)
-    dt_nasc=models.DateField(blank=True,null=True)
-    #endereço
-    tpLograd = models.CharField( max_length = 3  )
-    lograd   = models.CharField( max_length = 40 )
-    num      = models.IntegerField()
-    compl    = models.CharField( max_length = 25 )
-    bairro   = models.CharField( max_length = 20 )
-    locali   = models.CharField( max_length = 30 )
-    cep      = models.CharField( max_length = 8 )
-    uf       = models.CharField( max_length = 2 )
+# class Usuario(models.Model):
+#     nome = models.CharField(max_length=60)
+#     email = models.EmailField( max_length=100)
+#     senha = models.CharField(max_length=8)
+#     tel=models.CharField(blank=True,null=True,max_length=15)
+#     foto=models.ImageField(upload_to='profile_picture',blank=True,null=True)
+#     dt_nasc=models.DateField(blank=True,null=True)
+#     #endereço
+#     tpLograd = models.CharField( max_length = 3  )
+#     lograd   = models.CharField( max_length = 40 )
+#     num      = models.IntegerField()
+#     compl    = models.CharField( max_length = 25 )
+#     bairro   = models.CharField( max_length = 20 )
+#     locali   = models.CharField( max_length = 30 )
+#     cep      = models.CharField( max_length = 8 )
+#     uf       = models.CharField( max_length = 2 )
     
-    dt_criacao = models.DateTimeField(auto_now_add=True,blank=False,null=False)
+#     dt_criacao = models.DateTimeField(auto_now_add=True,blank=False,null=False)
 
-    def __str__(self):
-        return self.nome
+#     def __str__(self):
+#         return self.nome
         
     
 

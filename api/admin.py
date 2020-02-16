@@ -33,7 +33,7 @@ class TelefoneAdmin(admin.ModelAdmin):
 admin.site.register(Telefone, TelefoneAdmin)
 
 # admin.site.register(Servico)
-admin.site.register(Usuario)
+# admin.site.register(Usuario)
 admin.site.register(UsuarioServ)
 # admin.site.register(Telefone)
 admin.site.register(Endereco)

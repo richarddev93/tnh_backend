@@ -14,12 +14,12 @@ from .models import *
 #         user = User.objects.create_user(**validated_data)
 #         return user
     
-class UsuarioSerializer(serializers.ModelSerializer):
+# class UsuarioSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = Usuario
-        # fields = ['id','nome','email','senha','tel','dt_nasc']
-        fields = '__all__'
+#     class Meta:
+#         model = Usuario
+#         # fields = ['id','nome','email','senha','tel','dt_nasc']
+#         fields = '__all__'
 
 
 class HorarioSerializers(serializers.ModelSerializer):
