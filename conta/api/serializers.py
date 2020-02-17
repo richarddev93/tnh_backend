@@ -77,4 +77,5 @@ class LoginSerializer(serializers.ModelSerializer):
                 print(token[0])
                 data['id'] = user_obj.id
                 data['token']   = token[0] #upla depois converter para lista
+                
             return data
