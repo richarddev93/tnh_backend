@@ -28,8 +28,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
-
-
     #Minhas APPS
     'api',
     'conta'
