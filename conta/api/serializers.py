@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.db.models import Q
-from conta.models import Account
+from conta.models import Account,Perfil,Perfil_Serv
 from rest_framework.authtoken.models import Token
 class CadastroSerializer( serializers.ModelSerializer ) :
 
@@ -8,9 +8,11 @@ class CadastroSerializer( serializers.ModelSerializer ) :
 
     class Meta:
         model = Account
-        fields = ['username','email','password','password2']
+        fields = ['username','email','password','password2','is_staff']
         extra_kwargs = {
-            'password' : {'write_only' : True}
+            'password' : {'write_only' : True},
+            'is_staff' : {'write_only' : True}
+
         }
    
     def save(self):
@@ -18,9 +20,12 @@ class CadastroSerializer( serializers.ModelSerializer ) :
         conta = Account( 
             email = self.validated_data['email'],
             username = self.validated_data['username'],
-        )
+             is_staff = self.validated_data['is_staff']
+        )       
+        
         password = self.validated_data['password']
         password2 = self.validated_data['password2']
+
 
         if password != password2:
             raise serializers.ValidationError({ 'senha' : 'As senhas devem ser iguais.'})
@@ -29,9 +34,8 @@ class CadastroSerializer( serializers.ModelSerializer ) :
         conta.save()
         return conta
 
-
-
 class LoginSerializer(serializers.ModelSerializer):
+
     token = serializers.CharField(allow_blank = True , read_only = True)
     username = serializers.CharField(required=False, allow_blank=True)
     email = serializers.EmailField( label = 'Email ',required = False, allow_blank = True)
@@ -79,3 +83,14 @@ class LoginSerializer(serializers.ModelSerializer):
                 data['token']   = token[0] #upla depois converter para lista
                 
             return data
+
+class PerfilSerializer(serializers.ModelSerializer):
+
+    class Meta :
+        model = Perfil
+        fields = '__all__'
+class PerfilServSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Perfil_Serv
+        fields = '__all__'

@@ -8,26 +8,30 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
 class MyAccountManager(BaseUserManager):
-	def create_user(self, email, username, password=None):
+	def create_user(self, email, username, password=None,is_staff=False):
 		if not email:
 			raise ValueError('Users must have an email address')
 		if not username:
 			raise ValueError('Users must have a username')
+		if not is_staff:
+			raise ValueError('Users must have a staff')
 
 		user = self.model(
 			email=self.normalize_email(email),
 			username=username,
+			is_staff = is_staff,
 		)
 
 		user.set_password(password)
 		user.save(using=self._db)
 		return user
 
-	def create_superuser(self, email, username, password):
+	def create_superuser(self, email, username, password, is_staff):
 		user = self.create_user(
 			email=self.normalize_email(email),
 			password=password,
 			username=username,
+			is_staff = is_staff,
 		)
 		user.is_admin = True
 		user.is_staff = True
@@ -48,7 +52,7 @@ class Account(AbstractBaseUser):
 
 
 	USERNAME_FIELD = 'email'
-	REQUIRED_FIELDS = ['username']
+	REQUIRED_FIELDS = ['username','is_staff',]
 
 	objects = MyAccountManager()
 
@@ -66,15 +70,19 @@ class Account(AbstractBaseUser):
 
 
 class Perfil(models.Model):
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         Account,
         on_delete=models.CASCADE,
-        primary_key=True,
+        unique=True,
     )
     nome_completo = models.CharField(max_length=60)
     tel=models.CharField(blank=True,null=True,max_length=15)
     foto=models.ImageField(upload_to='profile_picture',blank=True,null=True)
     dt_nasc=models.DateField(blank=True,null=True)
+    genero = models.CharField( max_length= 1,blank=True, null=True)
+    interesses = models.CharField ( max_length=100)
+    promos = models.CharField( max_length = 1,default='N')
+    favoritos = models.CharField(max_length = 100,blank=True, null=True)
     #endereço
     tpLograd = models.CharField( max_length = 3  )
     lograd   = models.CharField( max_length = 40 )
@@ -94,3 +102,15 @@ class Perfil(models.Model):
 def create_auth_token( sender, instance = None, created = False, **kwargs):
     if created :
         Token.objects.create( user = instance )
+
+
+class Perfil_Serv(models.Model):
+
+    user_serv  = models.ForeignKey(Account,on_delete=models.CASCADE,unique=True )
+    nome       = models.CharField( max_length = 100 )
+    cpf        = models.CharField( max_length = 11 )
+    telefone   = models.CharField( max_length = 11 )
+    dt_criacao = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.nome
