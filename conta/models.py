@@ -70,6 +70,7 @@ class Account(AbstractBaseUser):
 
 
 class Perfil(models.Model):
+    id = models.BigIntegerField(primary_key = True)
     user = models.ForeignKey(
         Account,
         on_delete=models.CASCADE,
@@ -105,7 +106,7 @@ def create_auth_token( sender, instance = None, created = False, **kwargs):
 
 
 class Perfil_Serv(models.Model):
-
+    id = models.BigIntegerField(primary_key = True)
     user_serv  = models.ForeignKey(Account,on_delete=models.CASCADE,unique=True )
     nome       = models.CharField( max_length = 100 )
     cpf        = models.CharField( max_length = 11 )
