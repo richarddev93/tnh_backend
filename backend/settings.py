@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     
 
     #Minhas APPS
-    'api',
+    'servicos',
     'conta'
 ]
 

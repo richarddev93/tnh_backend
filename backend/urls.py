@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
    
     # REST FRAMEWORK URLS
-     path('api/servico/', include('api.urls')),
+     path('api/servico/', include('servicos.urls')),
      path('api/cadastro/', include('conta.api.urls')),
      
 ]

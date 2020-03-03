@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('desc', models.TextField(max_length=200)),
                 ('nota_media', models.DecimalField(decimal_places=2, default=0, editable=False, max_digits=3)),
                 ('status', models.BooleanField(default=True)),
-                ('categoria', models.ManyToManyField(to='api.Categoria')),
+                ('categoria', models.ManyToManyField(to='servicos.Categoria')),
             ],
         ),
         migrations.CreateModel(
@@ -90,13 +90,13 @@ class Migration(migrations.Migration):
                 ('num', models.CharField(max_length=9)),
                 ('wp', models.CharField(max_length=1)),
                 ('principal', models.CharField(max_length=1)),
-                ('servico', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='servico_telefone', to='api.Servico')),
+                ('servico', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='servico_telefone', to='servicos.Servico')),
             ],
         ),
         migrations.AddField(
             model_name='servico',
             name='usuario',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.UsuarioServ'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='servicos.UsuarioServ'),
         ),
         migrations.CreateModel(
             name='HrFuncionamento',
@@ -104,7 +104,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('dia', models.CharField(max_length=9)),
                 ('horario', models.CharField(max_length=60)),
-                ('servico', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='servico_horario', to='api.Servico')),
+                ('servico', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='servico_horario', to='servicos.Servico')),
             ],
         ),
         migrations.CreateModel(
@@ -122,7 +122,7 @@ class Migration(migrations.Migration):
                 ('gia', models.CharField(blank=True, max_length=4, null=True)),
                 ('unidade', models.CharField(blank=True, max_length=4, null=True)),
                 ('ibge', models.CharField(blank=True, max_length=4, null=True)),
-                ('servico', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='servico_endereco', to='api.Servico')),
+                ('servico', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='servico_endereco', to='servicos.Servico')),
             ],
         ),
     ]
