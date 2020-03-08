@@ -3,6 +3,12 @@
 import os
 from decouple import config
 from dj_database_url import parse as dburl
+
+import cloudinary  # cloudinary
+import cloudinary.uploader  # cloudinary
+import cloudinary.api  # cloudinary
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,6 +33,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'corsheaders',
+    'cloudinary',
     
 
     #documentação 
@@ -139,3 +146,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+
+cloudinary.config(
+    cloud_name="repoimgaxesoft",
+    api_key="447527866849349",
+    api_secret="Op130juc8Tp4AfaneCBE8TAkCaA"
+)

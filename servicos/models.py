@@ -8,6 +8,8 @@ import conta
 from conta.models import Account
 from django.db import models
 
+from cloudinary.models import CloudinaryField
+
 
 
 class Telefone(models.Model):
@@ -79,11 +81,9 @@ class Avaliacao(models.Model) :
 
 class ImagensServ(models.Model) :
     usuario = models.ForeignKey(Account, related_name='imagem_servicos', on_delete=models.CASCADE)
-    f1 = models.ImageField( blank = True, null = True)
+    f1 = CloudinaryField('imagem')
     f2 = models.ImageField( blank=True, null=True)
     f3 = models.ImageField( blank=True, null=True)
     f4 = models.ImageField( blank=True, null=True)
 
-
- 
 

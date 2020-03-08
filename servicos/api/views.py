@@ -5,9 +5,9 @@ from django.http import JsonResponse
 from rest_framework.authtoken.models import Token
 
 # from django.contrib.auth.models import User
-from .serializers import ServicosSerializer,HorarioSerializers,EnderecoSerializers,TelefoneSerializers
+from .serializers import ServicosSerializer,HorarioSerializers,EnderecoSerializers,TelefoneSerializers,ImageSerializer
 # UserSerializer
-from servicos.models import Servico,HrFuncionamento,Endereco,Telefone
+from servicos.models import Servico,HrFuncionamento,Endereco,Telefone,ImagensServ
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -25,3 +25,9 @@ class HorarioView(viewsets.ModelViewSet):
 class TelefoneView(viewsets.ModelViewSet):
     queryset = Telefone.objects.all()
     serializer_class = TelefoneSerializers
+
+class ImagensServView(viewsets.ModelViewSet):
+    queryset = ImagensServ.objects.all()
+    serializer_class = ImageSerializer
+
+    

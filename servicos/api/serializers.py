@@ -1,6 +1,6 @@
 from rest_framework import serializers
 # from django.contrib.auth.models import User
-from servicos.models import HrFuncionamento,Categoria,Servico,Telefone,Endereco
+from servicos.models import HrFuncionamento,Categoria,Servico,Telefone,Endereco,ImagensServ
 
 class HorarioSerializers(serializers.ModelSerializer):
     class Meta:
@@ -28,3 +28,7 @@ class ServicosSerializer(serializers.ModelSerializer):
         model = Servico
         fields = '__all__'
 
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImagensServ
+        fields = '__all__'
