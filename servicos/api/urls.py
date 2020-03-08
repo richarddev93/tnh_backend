@@ -1,13 +1,14 @@
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers, serializers, viewsets
-from .views import ServicosView,HorarioView
-
+from .views import *
 # UserViewSet
 router = routers.DefaultRouter()
 # router.register('users',UserViewSet)
 router.register('servicos',ServicosView)
+router.register('enderecos',EnderecoServView)
 router.register('horarios',HorarioView)
+router.register('telefones',TelefoneView)
 
 
 

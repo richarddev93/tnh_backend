@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import *
 from functools import partial
 from django.forms import MediaDefiningClass
+
+
 # Register your models here.
 class TelefoneInlines(admin.TabularInline):
     model = Telefone
@@ -27,14 +29,14 @@ class ServicoAdmin(admin.ModelAdmin):
 
 admin.site.register(Servico,ServicoAdmin)
 
-
 class TelefoneAdmin(admin.ModelAdmin):
     list_display = ('servico','num')
 admin.site.register(Telefone, TelefoneAdmin)
 
-# admin.site.register(Servico)
-# admin.site.register(Usuario)
-admin.site.register(UsuarioServ)
-# admin.site.register(Telefone)
 admin.site.register(Endereco)
-admin.site.register(Categoria)
+# admin.site.register(Categoria)
+admin.site.register(ImagensServ)
+
+class CategAdmin(admin.ModelAdmin):
+    list_display = ('categ_nome','desc')
+admin.site.register(Categoria, CategAdmin)
