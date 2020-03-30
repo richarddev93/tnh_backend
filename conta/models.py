@@ -6,7 +6,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
-
+from cloudinary.models import CloudinaryField
 class MyAccountManager(BaseUserManager):
 	def create_user(self, email, username, password=None,is_staff=False):
 		if not email:
@@ -78,7 +78,7 @@ class Perfil(models.Model):
     )
     nome_completo = models.CharField(max_length=60)
     tel=models.CharField(blank=True,null=True,max_length=15)
-    foto=models.ImageField(upload_to='profile_picture',blank=True,null=True)
+    foto=CloudinaryField(blank=True,null=True)
     dt_nasc=models.DateField(blank=True,null=True)
     genero = models.CharField( max_length= 1,blank=True, null=True)
     interesses = models.CharField ( max_length=100)

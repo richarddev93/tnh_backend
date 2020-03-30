@@ -33,6 +33,16 @@ class CadastroSerializer( serializers.ModelSerializer ) :
         conta.set_password(password)
         conta.save()
         return conta
+class PerfilSerializer(serializers.ModelSerializer):
+    
+    class Meta :
+        model = Perfil
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        representation = super(PerfilSerializer, self).to_representation(instance)
+        representation['foto'] = instance.foto.url
+        return representation
 
 class LoginSerializer(serializers.ModelSerializer):
 
@@ -40,10 +50,11 @@ class LoginSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=False, allow_blank=True)
     email = serializers.EmailField( label = 'Email ',required = False, allow_blank = True)
     # id = serializers.IntegerField()
+    perfil = PerfilSerializer(  read_only = True)
     
     class Meta:
         model = Account
-        fields = ['id','username','email','password','token']
+        fields = ['id','username','email','password','token','perfil']
         extra_kwargs = {
             'password' : {'write_only' : True}
         }
@@ -66,29 +77,24 @@ class LoginSerializer(serializers.ModelSerializer):
             
             if usuario.exists() and usuario.count():
                  user_obj = usuario.first()
-                 
-                 print(user_obj.id)
 
             else :
                 raise serializers.ValidationError({"erro" : "Usuario ou e-mail inválidos "})
 
             if user_obj:
                 if not user_obj.check_password( password) :
-                    raise serializers.ValidationError ( { "erro" : "Credenciais inválidas"})
+                    raise serializers.ValidationError ( { "erro" : "Senha Incorreta"})
                 
                 token = Token.objects.get_or_create(user=user_obj.id)
-               
-                print(token[0])
+                data['perfil'] = Perfil.objects.get(id=user_obj.id)
+                # print(token[0])
                 data['id'] = user_obj.id
-                data['token']   = token[0] #upla depois converter para lista
+                data['token']   = token[0]
                 
+                print (data)
             return data
 
-class PerfilSerializer(serializers.ModelSerializer):
 
-    class Meta :
-        model = Perfil
-        fields = '__all__'
 class PerfilServSerializer(serializers.ModelSerializer):
 
     class Meta:

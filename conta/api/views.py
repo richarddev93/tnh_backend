@@ -50,11 +50,18 @@ def loginUser( request) :
 
     if request.method == 'POST':
         data = request.data
+        print("AQUIIIIIIIIIIIIIIIIII")
+        # print(data)
         serializer = LoginSerializer(data = data)
-        if serializer.is_valid( raise_exception = True ):
-            print("View")
+        if serializer.is_valid( raise_exception = False ):
+           
             new_data = serializer.data
+            print(new_data)
             return Response( new_data, status = status.HTTP_200_OK )
+
+        # print(serializer)    
+    # return Response( "Errinho", status = status.HTTP_400_BAD_REQUEST )
+    print(serializer.errors)
     return Response( serializer.errors, status = status.HTTP_400_BAD_REQUEST )
 
 @api_view(['GET','POST'])

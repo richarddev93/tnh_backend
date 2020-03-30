@@ -4,7 +4,7 @@ import os
 from decouple import config
 from dj_database_url import parse as dburl
 
-import cloudinary  # cloudinary
+import cloudinary  
 import cloudinary.uploader  # cloudinary
 import cloudinary.api  # cloudinary
 
@@ -17,7 +17,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ['tnh-webservice.herokuapp.com','localhost','http://tnh-webservice.herokuapp.com/','http://127.0.0.1:8000/']
+ALLOWED_HOSTS = ['tnh-webservice.herokuapp.com','localhost','127.0.0.1','http://tnh-webservice.herokuapp.com/','192.168.0.101','http://192.168.0.101:8000/','axeapp.sytes.net']
 # ALLOWED_HOSTS = []
 
 
@@ -43,6 +43,11 @@ INSTALLED_APPS = [
     'servicos',
     'conta'
 ]
+cloudinary.config(
+    cloud_name="repoimgaxesoft",
+    api_key="447527866849349",
+    api_secret="Op130juc8Tp4AfaneCBE8TAkCaA"
+)
 
 AUTH_USER_MODEL = 'conta.Account'
 
@@ -148,8 +153,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 
-cloudinary.config(
-    cloud_name="repoimgaxesoft",
-    api_key="447527866849349",
-    api_secret="Op130juc8Tp4AfaneCBE8TAkCaA"
-)
