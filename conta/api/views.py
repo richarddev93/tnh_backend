@@ -17,6 +17,7 @@ from rest_framework.permissions import IsAuthenticated,AllowAny
 def cadastro_usuario_view( request ):
 
     if request.method == 'POST':
+        print("Cadastro")
         serializer = CadastroSerializer( data = request.data)
         print(serializer)
         data ={}
@@ -30,11 +31,14 @@ def cadastro_usuario_view( request ):
             token = Token.objects.get(user=conta).key
             print("Token :"+ token)
             data['token'] = token
+            codStatus = status.HTTP_201_CREATED
+            
         else :
             data = serializer.errors
+            codStatus = status.HTTP_409_CONFLICT
             print(data)
-
-        return Response(data)
+        print(data)
+        return Response(data,status=codStatus)
         
 @api_view(['GET',])
 def atualizaToken( request ):

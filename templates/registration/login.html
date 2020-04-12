@@ -1,0 +1,76 @@
+<link href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="icon" href="/static/logo_title.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Login!</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+ <div class="container">
+	             </br>
+            <div class="container">
+                <div class="col m6 s10 offset-m3 offset-s3 ">
+                    
+                    <div class="col m6 s10 z-depth-3 card-panel  ">   
+                        </br> 
+                            <div class="center">
+                                <img src="/static/logo.png" alt="" class="squad responsive-img ">
+                            </div>
+                        <div class="row login">
+                            <h4>Login Ejc</h4>                    
+                            <form method ="post" class="col m12 s12">
+                                {% csrf_token %}
+                                {{form}}
+                                <input type ="hidden" name="next" value ="{{ next }}">
+                                <div class="row">
+                                    <button class="btn waves-effect waves-light deep-purple center" type="submit">Entrar</button>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6 m6 l6">
+                                        <p class="margin medium-small"><a href="#">Solicitar Cadastro!</a></p>
+                                    </div>
+                                    <div class="input-field col s6 m6 l6">
+                                        <p class="margin right-align medium-small"><a href="#">Esqueceu a Senha?</a></p>
+                                    </div>          
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>    
+                  
+
+                </div>
+	    	</div>
+
+</div>
+
+
+
+
+{% comment %} <footer class="page-footer grey darken-4">
+    <div class="footer-copyright">
+        <div class="container center">
+        	Copyright © 2017 - Miguel92
+        </div>
+    </div>
+</footer> {% endcomment %}
+
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="mySpxript.js"></script>
+  </body>
+</html>

@@ -17,10 +17,19 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ['tnh-webservice.herokuapp.com','localhost','127.0.0.1','http://tnh-webservice.herokuapp.com/','192.168.0.101','http://192.168.0.101:8000/','axeapp.sytes.net']
+
+ALLOWED_HOSTS = ['tnh-webservice.herokuapp.com','localhost','127.0.0.1','http://tnh-webservice.herokuapp.com/','http://192.168.0.101:8000/','axeapp.sytes.net','10.0.0.102']
 # ALLOWED_HOSTS = []
 
-
+# if DEBUG:
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# else:
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'richardmachado.93@gmail.com'
+EMAIL_HOST_PASSWORD = 'nzfmrcdeaxnncuan'
 # Application definition
 
 INSTALLED_APPS = [
@@ -32,16 +41,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework.authtoken',
     'rest_framework',
+    'rest_auth',
     'corsheaders',
     'cloudinary',
     
+    
+
 
     #documentação 
     
 
     #Minhas APPS
     'servicos',
-    'conta'
+    'conta',
+    'frontend',
+    
 ]
 cloudinary.config(
     cloud_name="repoimgaxesoft",
@@ -49,6 +63,13 @@ cloudinary.config(
     api_secret="Op130juc8Tp4AfaneCBE8TAkCaA"
 )
 
+# DJOSER = {
+#     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+#     'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+#     'ACTIVATION_URL': '#/activate/{uid}/{token}',
+#     'SEND_ACTIVATION_EMAIL': True,
+#     'SERIALIZERS': {},
+# }
 AUTH_USER_MODEL = 'conta.Account'
 
 MIDDLEWARE = [
@@ -66,7 +87,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

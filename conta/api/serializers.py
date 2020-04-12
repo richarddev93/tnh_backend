@@ -39,10 +39,10 @@ class PerfilSerializer(serializers.ModelSerializer):
         model = Perfil
         fields = '__all__'
 
-    def to_representation(self, instance):
-        representation = super(PerfilSerializer, self).to_representation(instance)
-        representation['foto'] = instance.foto.url
-        return representation
+    # def to_representation(self, instance):
+    #     representation = super(PerfilSerializer, self).to_representation(instance)
+    #     representation['foto'] = instance.foto.url
+    #     return representation
 
 class LoginSerializer(serializers.ModelSerializer):
 
