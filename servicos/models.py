@@ -87,3 +87,14 @@ class ImagensServ(models.Model) :
     f4 = models.ImageField( blank=True, null=True)
 
 
+
+class Favoritos(models.Model):
+    user    = models.ForeignKey(Account,on_delete=models.CASCADE)
+    servico =models.ForeignKey(Servico,on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
+
+    class Meta :
+        unique_together = ['user','servico']
+
+    def __str__ (self):
+       return str(self.user)

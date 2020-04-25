@@ -10,6 +10,7 @@ router.register('enderecos',EnderecoServView)
 router.register('horarios',HorarioView)
 router.register('telefones',TelefoneView)
 router.register('imgs',ImagensServView)
+router.register('favoritos',FavoritosView)
 
 
 

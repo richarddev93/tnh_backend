@@ -40,3 +40,13 @@ admin.site.register(ImagensServ)
 class CategAdmin(admin.ModelAdmin):
     list_display = ('categ_nome','desc')
 admin.site.register(Categoria, CategAdmin)
+
+class FavoritosAdmin(admin.ModelAdmin):
+    list_display = ('user','servico','is_active')
+    search_fields = ( 'nome','servico')
+
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
+
+admin.site.register(Favoritos, FavoritosAdmin)

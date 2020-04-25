@@ -100,3 +100,4 @@ class PerfilServSerializer(serializers.ModelSerializer):
     class Meta:
         model = Perfil_Serv
         fields = '__all__'
+

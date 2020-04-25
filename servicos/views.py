@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from rest_framework.authtoken.models import Token
 
 # from django.contrib.auth.models import User
-from .serializers import ServicosSerializer,HorarioSerializers
+from .serializers import ServicosSerializer,HorarioSerializers,FavoritosSerializer
 # UserSerializer
 from .models import * 
 from django.views.decorators.csrf import csrf_exempt
@@ -19,3 +19,5 @@ class ServicosView(viewsets.ModelViewSet):
 class HorarioView(viewsets.ModelViewSet):
     queryset = HrFuncionamento.objects.all()
     serializer_class = HorarioSerializers
+
+
