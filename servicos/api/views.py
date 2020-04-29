@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view,permission_classes
 from django_filters.rest_framework import DjangoFilterBackend
-
+from django.db.models import Q
 
 # from django.contrib.auth.models import User
 from .serializers import ServicosSerializer,HorarioSerializers,EnderecoSerializers,TelefoneSerializers,ImageSerializer,FavoritosSerializer
@@ -40,27 +40,25 @@ class FavoritosView(viewsets.ModelViewSet):
     filterset_fields  = ['user','is_active']
 
 
-@api_view(['GET','PUT','POST'])
-def api_favoritos ( request, id,id_s):
+@api_view(['GET'])
+def api_listFavoritos ( request, id):
 
     data ={}
-    try:
-        favoritos = Favoritos.objects.filter(user=id)
-        if request.method == 'POST':
-            data = request.data
-            print("AQUIIIIIIIIIIIIIIIIII@@@@@@@")
-            print(data)
-            if serializer.is_valid():
-                serializer.save()
-            return Response( serializer.data, status=status.HTTP_201_CREATED)
-        else :    
-            print("FAVORITOSS")   
+    try:        
+        print("123456")
+        favoritos = Favoritos.objects.values('servico').filter(
+        Q(user = id),
+        Q(is_active = True))
+
+        if favoritos :
+            servsFavoritos = Servico.objects.raw('select a.* from servicos_servico a inner join servicos_favoritos b on b.Servico_id = a.id where b.user_id ='+str(id))       
             if request.method == 'GET':
-                serializer = FavoritosSerializer(favoritos)
+                serializer = ServicosSerializer(servsFavoritos,many=True)                                  
+                print( serializer.data)
                 return Response( serializer.data )
-        
-            
+
     except Favoritos.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response(status=status.HTTP_404_NOT_FOUND)   
+
 
     

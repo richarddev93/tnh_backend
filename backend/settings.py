@@ -18,7 +18,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 
-ALLOWED_HOSTS = ['tnh-webservice.herokuapp.com','localhost','127.0.0.1','http://tnh-webservice.herokuapp.com/','http://192.168.0.101:8000/','axeapp.sytes.net','10.0.0.102']
+ALLOWED_HOSTS = ['tnh-webservice.herokuapp.com','localhost','127.0.0.1','http://tnh-webservice.herokuapp.com/','http://192.168.0.101:8000/','axeapp.sytes.net','10.0.0.102','10.0.0.189']
 # ALLOWED_HOSTS = []
 
 if DEBUG:
