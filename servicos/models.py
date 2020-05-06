@@ -10,8 +10,6 @@ from django.db import models
 
 from cloudinary.models import CloudinaryField
 
-
-
 class Telefone(models.Model):
     ddd = models.CharField( max_length = 2 )
     num = models.CharField( max_length = 9 )
@@ -34,7 +32,7 @@ class HrFuncionamento ( models.Model ):
     servico = models.ForeignKey('Servico', related_name='servico_horario', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.dia
+        return self.dia + ' ' + self.horario
     
 class Endereco(models.Model):
     tpLograd = models.CharField( max_length = 3  )
@@ -48,7 +46,6 @@ class Endereco(models.Model):
     gia      = models.CharField( max_length = 4 ,blank=True ,null=True )
     unidade  = models.CharField( max_length = 4, blank=True, null=True )
     ibge     = models.CharField( max_length = 4 ,blank=True, null=True )
-    servico  = models.ForeignKey('Servico', related_name='servico_endereco', on_delete=models.CASCADE)
     principal = models.BooleanField(default= False )
                
 class Servico(models.Model):
@@ -59,18 +56,18 @@ class Servico(models.Model):
     tags = models.CharField( max_length = 100 )
     site = models.CharField( max_length = 100 )
     email  = models.EmailField( max_length = 100)
-    image = models.ImageField( upload_to='profile_picture', blank = True, null = True)
+    #image = models.ImageField( upload_to='profile_picture', blank = True, null = True)
     desc  = models.TextField( max_length=200 )
     nota_media = models.DecimalField(max_digits = 3,decimal_places=2 ,editable=False,default=0)
 
     usuario  = models.ForeignKey( Account ,on_delete = models.CASCADE)
     categoria = models.ManyToManyField( Categoria,related_name='servico_categ',blank=True, null=True)
+    endereco = models.ForeignKey(Endereco ,related_name = 'enderecos',on_delete = models.CASCADE )
     status  = models.BooleanField(default=True)
 
 
     def __str__(self):
         return self.nomefantasia
-
 
 class Avaliacao(models.Model) :
     nota = models.IntegerField()
@@ -78,13 +75,13 @@ class Avaliacao(models.Model) :
     id_usuario_consum = models.IntegerField()
     id_servico = models.IntegerField()
 
-
 class ImagensServ(models.Model) :
-    usuario = models.ForeignKey(Account, related_name='imagem_servicos', on_delete=models.CASCADE)
-    f1 = CloudinaryField('imagem')
-    f2 = models.ImageField( blank=True, null=True)
-    f3 = models.ImageField( blank=True, null=True)
-    f4 = models.ImageField( blank=True, null=True)
+    servico = models.ForeignKey(Servico, related_name='imagem_servicos', on_delete=models.CASCADE)
+    imagem = CloudinaryField('imagem')
+    uri_image = models.CharField(max_length = 400)
+        
+        
+   
 
 
 

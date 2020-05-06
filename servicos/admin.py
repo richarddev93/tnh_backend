@@ -11,8 +11,11 @@ class HorarioInlines(admin.TabularInline):
     model = HrFuncionamento
 class EnderecoInlines(admin.StackedInline):
     model = Endereco
+    
+class ImagensServInlines(admin.StackedInline)    :
+    model = ImagensServ
 class ServicoAdmin(admin.ModelAdmin):
-    inlines = [TelefoneInlines,HorarioInlines,EnderecoInlines]
+    inlines = [TelefoneInlines,HorarioInlines,ImagensServInlines]
     # readonly_fields = ('list_telefone',)
     list_display = ('nomefantasia','list_telefone')
     # fields = ('nomefantasia','list_telefone')
@@ -50,3 +53,4 @@ class FavoritosAdmin(admin.ModelAdmin):
     fieldsets = ()
 
 admin.site.register(Favoritos, FavoritosAdmin)
+
