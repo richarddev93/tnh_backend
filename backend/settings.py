@@ -18,19 +18,12 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 
-ALLOWED_HOSTS = ['tnh-webservice.herokuapp.com','localhost','127.0.0.1','http://tnh-webservice.herokuapp.com/','http://192.168.0.101:8000/','axeapp.sytes.net','10.0.0.102','10.0.0.189']
+ALLOWED_HOSTS = ['tnh-webservice.herokuapp.com','localhost','127.0.0.1','http://tnh-webservice.herokuapp.com/','http://192.168.0.101:8000/','axeapp.sytes.net','10.0.1.114','10.0.0.189']
 # ALLOWED_HOSTS = []
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# else:
-# EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'richardmachado.93@gmail.com'
-# EMAIL_HOST_PASSWORD = 'nzfmrcdeaxnncuan'
-# Application definition
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
