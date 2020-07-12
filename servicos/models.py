@@ -38,7 +38,7 @@ class Endereco(models.Model):
     tpLograd = models.CharField( max_length = 3  )
     lograd   = models.CharField( max_length = 40 )
     num      = models.IntegerField()
-    compl    = models.CharField( max_length = 25 )
+    compl    = models.CharField( max_length = 25 ,null=True)
     bairro   = models.CharField( max_length = 20 )
     locali   = models.CharField( max_length = 30 )
     cep      = models.CharField( max_length = 8 )
@@ -47,6 +47,9 @@ class Endereco(models.Model):
     unidade  = models.CharField( max_length = 4, blank=True, null=True )
     ibge     = models.CharField( max_length = 4 ,blank=True, null=True )
     principal = models.BooleanField(default= False )
+    #46.7494038
+    lat      = models.DecimalField(default=0, max_digits=9, decimal_places=7)
+    lng      = models.DecimalField(default=0, max_digits=9, decimal_places=7)
                
 class Servico(models.Model):
     nomefantasia = models.CharField( max_length = 60)
@@ -79,11 +82,6 @@ class ImagensServ(models.Model) :
     servico = models.ForeignKey(Servico, related_name='imagem_servicos', on_delete=models.CASCADE)
     imagem = CloudinaryField('imagem')
     uri_image = models.CharField(max_length = 400)
-        
-        
-   
-
-
 
 class Favoritos(models.Model):
     user    = models.ForeignKey(Account,on_delete=models.CASCADE)

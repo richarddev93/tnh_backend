@@ -16,7 +16,7 @@ class TelefoneSerializers(serializers.ModelSerializer):
 class EnderecoSerializers( serializers.ModelSerializer ) :
     class Meta :
         model = Endereco
-        fields = ('tpLograd','lograd','num','compl','bairro','locali','cep','principal',)
+        fields = ('tpLograd','lograd','num','compl','bairro','locali','cep','principal','lat','lng')
 
 class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -47,7 +47,7 @@ class ServicosSerializer(serializers.ModelSerializer):
     imagem_servicos = ImageSerializer(many = True,read_only= True)
     class Meta:
         model = Servico
-        fields = ('id','nomefantasia','formaspagto','tags','site','email','desc','endereco','categoria','servico_telefone','servico_horario','imagem_servicos')
+        fields = ('id','nomefantasia','formaspagto','tags','site','email','desc','endereco','categoria','servico_telefone','servico_horario','imagem_servicos','nota_media')
 
 
 
