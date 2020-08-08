@@ -11,6 +11,7 @@ router.register('horarios',HorarioView)
 router.register('telefones',TelefoneView)
 router.register('imgs',ImagensServView)
 router.register('favoritos',FavoritosView)
+router.register('categorias',CategoriasView)
 
 
 

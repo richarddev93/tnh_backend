@@ -15,6 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
+TEST   = config('TEST', default=True, cast=bool)
 
 
 
@@ -38,14 +39,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'cloudinary',
     'django_filters' ,
-
-    
-    
-
-
     #documentação 
-    
-
     #Minhas APPS
     'servicos',
     'conta',
@@ -111,19 +105,18 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 
 }
+#controle do banco de teste e produção
+if TEST:
+    DATABASE = 'DATABASE_URL_TEST'
+else:
+    DATABASE = 'DATABASE_URL'
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = { 
+    'default': config(DATABASE, default=default_dburl, cast=dburl),
+}
 
 
 # Password validation

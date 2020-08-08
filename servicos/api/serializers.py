@@ -16,21 +16,15 @@ class TelefoneSerializers(serializers.ModelSerializer):
 class EnderecoSerializers( serializers.ModelSerializer ) :
     class Meta :
         model = Endereco
-        fields = ('tpLograd','lograd','num','compl','bairro','locali','cep','principal','lat','lng')
+        fields = ('tplograd','lograd','num','compl','bairro','locali','cep','principal','lat','lng')
 
-class CategoriaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Categoria
-        fields = ('categ_nome',)
-        
-        
+
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImagensServ
         fields = ('id','imagem',)
         
     def to_representation(self, instance):
-        print('##########')
         representation = super(ImageSerializer, self).to_representation(instance)
         imagemURL = cloudinary.utils.cloudinary_url(instance.imagem.url, width=100, height=150, crop="fill")
         imagemURLx = cloudinary.utils.cloudinary_url(instance.imagem.url, width=100, height=150, crop='fill' , quality="auto:good")
@@ -56,3 +50,14 @@ class FavoritosSerializer(serializers.ModelSerializer):
     class Meta :
         model = Favoritos
         fields = '__all__'
+
+class CategoriaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = ('id','categ_nome','desc','img',)
+
+    def to_representation(self, instance):
+        representation = super(CategoriaSerializer, self).to_representation(instance)
+        imagemURLx = cloudinary.utils.cloudinary_url(instance.img.url, width=100, height=150, crop='fill' , quality="auto:good")
+        representation['img'] = imagemURLx[0]
+        return representation   

@@ -58,7 +58,7 @@ class Migration(migrations.Migration):
                 ('tel', models.CharField(blank=True, max_length=15, null=True)),
                 ('foto', models.ImageField(blank=True, null=True, upload_to='profile_picture')),
                 ('dt_nasc', models.DateField(blank=True, null=True)),
-                ('tpLograd', models.CharField(max_length=3)),
+                ('tplograd', models.CharField(max_length=3)),
                 ('lograd', models.CharField(max_length=40)),
                 ('num', models.IntegerField()),
                 ('compl', models.CharField(max_length=25)),
@@ -111,7 +111,7 @@ class Migration(migrations.Migration):
             name='Endereco',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tpLograd', models.CharField(max_length=3)),
+                ('tplograd', models.CharField(max_length=3)),
                 ('lograd', models.CharField(max_length=40)),
                 ('num', models.IntegerField()),
                 ('compl', models.CharField(max_length=25)),

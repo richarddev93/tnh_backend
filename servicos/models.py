@@ -22,7 +22,9 @@ class Telefone(models.Model):
 
 class Categoria(models.Model):
     categ_nome = models.CharField(max_length=10 )
-    desc = models.TextField(max_length=60)
+    desc       = models.TextField(max_length=60)
+    img        = CloudinaryField('img')
+
     def __str__(self):
         return self.categ_nome
 
@@ -35,7 +37,7 @@ class HrFuncionamento ( models.Model ):
         return self.dia + ' ' + self.horario
     
 class Endereco(models.Model):
-    tpLograd = models.CharField( max_length = 3  )
+    tplograd = models.CharField( max_length = 3  )
     lograd   = models.CharField( max_length = 40 )
     num      = models.IntegerField()
     compl    = models.CharField( max_length = 25 ,null=True)

@@ -84,7 +84,7 @@ class Perfil(models.Model):
     promos = models.CharField( max_length = 1,default='N')
     favoritos = models.CharField(max_length = 100,blank=True, null=True)
     #endereço
-    tpLograd = models.CharField( max_length = 3  )
+    tplograd = models.CharField( max_length = 3  )
     lograd   = models.CharField( max_length = 40 )
     num      = models.IntegerField()
     compl    = models.CharField( max_length = 25 )

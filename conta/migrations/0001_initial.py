@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
                 ('interesses', models.CharField(max_length=100)),
                 ('promos', models.CharField(default='N', max_length=1)),
                 ('favoritos', models.CharField(blank=True, max_length=100, null=True)),
-                ('tpLograd', models.CharField(max_length=3)),
+                ('tplograd', models.CharField(max_length=3)),
                 ('lograd', models.CharField(max_length=40)),
                 ('num', models.IntegerField()),
                 ('compl', models.CharField(max_length=25)),

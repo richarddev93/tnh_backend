@@ -8,9 +8,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
 
 # from django.contrib.auth.models import User
-from .serializers import ServicosSerializer,HorarioSerializers,EnderecoSerializers,TelefoneSerializers,ImageSerializer,FavoritosSerializer
+from .serializers import ServicosSerializer,HorarioSerializers,EnderecoSerializers,TelefoneSerializers,ImageSerializer,FavoritosSerializer,CategoriaSerializer
 # UserSerializer
-from servicos.models import Servico,HrFuncionamento,Endereco,Telefone,ImagensServ,Favoritos
+from servicos.models import Servico,HrFuncionamento,Endereco,Telefone,ImagensServ,Favoritos,Categoria
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -60,5 +60,6 @@ def api_listFavoritos ( request, id):
     except Favoritos.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)   
 
-
-    
+class CategoriasView(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
